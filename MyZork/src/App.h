@@ -8,6 +8,7 @@ class App {
 public:
 	App();
 	~App();
+	bool Init();
 	bool Update();
 	//bool CleanUp();
 private:

@@ -6,7 +6,7 @@ public:
 	Module();
 	virtual ~Module();
 
-	//virtual bool Init();
+	virtual bool Init();
 	virtual bool Update();
 	//virtual bool CleanUp();
 private:
