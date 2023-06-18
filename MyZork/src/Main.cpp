@@ -2,10 +2,11 @@
 
 int main()
 {
+	//TODO: Error LOG system
+
 	App app;
 	if (!app.Init())
 		return 0;
-	//TODO: Error LOG system
 	while (true) {
 		if (!app.Update())
 			break;

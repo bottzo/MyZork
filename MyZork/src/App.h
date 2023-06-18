@@ -2,7 +2,7 @@
 #define _APP_H__
 
 #include "Module.h"
-#define NUM_MODULES 1
+#define NUM_MODULES 2
 
 class App {
 public:

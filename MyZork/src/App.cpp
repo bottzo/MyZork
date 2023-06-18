@@ -1,9 +1,10 @@
 #include "App.h"
 #include "Input.h"
+#include "World.h"
 
 App::App() {
 	modules[0] = new Input();
-	//modules[1] = new EntityManager(); //World??
+	modules[1] = new World(); //World??
 }
 
 App::~App(){

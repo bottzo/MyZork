@@ -140,16 +140,26 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\App.cpp" />
+    <ClCompile Include="src\Creature.cpp" />
+    <ClCompile Include="src\Entity.cpp" />
     <ClCompile Include="src\Globals.cpp" />
     <ClCompile Include="src\Input.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Module.cpp" />
+    <ClCompile Include="src\Player.cpp" />
+    <ClCompile Include="src\Room.cpp" />
+    <ClCompile Include="src\World.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\App.h" />
+    <ClInclude Include="src\Creature.h" />
+    <ClInclude Include="src\Entity.h" />
     <ClInclude Include="src\Globals.h" />
     <ClInclude Include="src\Input.h" />
     <ClInclude Include="src\Module.h" />
+    <ClInclude Include="src\Player.h" />
+    <ClInclude Include="src\Room.h" />
+    <ClInclude Include="src\World.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
