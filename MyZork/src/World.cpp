@@ -25,14 +25,15 @@ bool World::Init() {
 
 bool World::Update()
 {
-	ExecuteArguments();
+	if (!ExecuteArguments())
+		return false;
 
 	for (std::vector<Entity*>::iterator it = entities.begin(); it != entities.end(); ++it)
 		(*it)->Update();
 	return true;
 }
 
-void World::ExecuteArguments()
+bool World::ExecuteArguments()
 {
 	const std::vector<std::string>& args = input->GetArgs();
 	if (args.size() > 0)
@@ -42,9 +43,13 @@ void World::ExecuteArguments()
 			player->Look();
 			std::cout << '\n';
 		}
+		else if (!strcmp(args[0].c_str(), "quit"))
+			return false;
 		else
 			std::cout << "Did not understand the command\n";
 
 		//std::cout << '\n';
 	}
+
+	return true;
 }

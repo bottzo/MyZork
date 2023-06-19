@@ -15,7 +15,7 @@ public:
 	bool Init()override;
 	bool Update()override;
 private:
-	void ExecuteArguments();
+	bool ExecuteArguments();
 	std::vector<Entity*> entities;
 	Player* player;
 	const Input* input;
