@@ -7,7 +7,11 @@
 World::World(const Input*inInput) : Module(), input(inInput) {}
 
 //TODO: delete the entities!!!!
-World::~World() {}
+World::~World() {
+	for (int i = 0; i < entities.size(); ++i)
+		delete entities[i];
+	entities.clear();
+}
 
 bool World::Init() {
 	entities.reserve(2);

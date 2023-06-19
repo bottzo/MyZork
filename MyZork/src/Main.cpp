@@ -1,4 +1,5 @@
 #include "App.h"
+#include <iostream>
 
 int main()
 {
@@ -11,5 +12,6 @@ int main()
 		if (!app.Update())
 			break;
 	}
+	std::cout << "Thanks for playing";
 	return 0;
 }
