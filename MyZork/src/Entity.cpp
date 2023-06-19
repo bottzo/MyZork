@@ -4,12 +4,12 @@ Entity::Entity(eType inType, const char* inName, const char* desc) : type(inType
 
 Entity::~Entity(){}
 
-const char* Entity::GetName()
+const char* Entity::GetName() const
 {
 	return name.c_str();
 }
 
-const char* Entity::GetDescription()
+const char* Entity::GetDescription() const
 {
 	return description.c_str();
 }
