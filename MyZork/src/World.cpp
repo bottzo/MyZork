@@ -38,17 +38,26 @@ bool World::ExecuteArguments()
 	const std::vector<std::string>& args = input->GetArgs();
 	if (args.size() > 0)
 	{
+		bool err = false;
 		if (!strcmp(args[0].c_str(), "look"))
 		{
-			player->Look();
-			std::cout << '\n';
+			if (args.size() == 1)
+			{
+				player->Look();
+				std::cout << '\n';
+			}
+			else
+				err = true;
 		}
 		else if (!strcmp(args[0].c_str(), "quit"))
-			return false;
+			if (args.size() == 1)
+				return false;
+			else
+				err = true;
 		else
 			std::cout << "Did not understand the command\n";
-
-		//std::cout << '\n';
+		if(err)
+			std::cout << "I only understood you as far as wanting to " << args[0] << '\n';
 	}
 
 	return true;
