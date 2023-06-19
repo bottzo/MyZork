@@ -9,7 +9,7 @@ public:
 	Creature(eType inType, const char* inName, const char* desc, Room* loc);
 	virtual ~Creature();
 	virtual void Update() = 0;
-private:
+protected:
 	Room* location;
 };
 

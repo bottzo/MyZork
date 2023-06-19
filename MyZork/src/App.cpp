@@ -4,7 +4,7 @@
 
 App::App() {
 	modules[0] = new Input();
-	modules[1] = new World(); //World??
+	modules[1] = new World((Input*)modules[0]); //World??
 }
 
 App::~App(){

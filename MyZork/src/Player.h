@@ -9,6 +9,7 @@ public:
 	Player(eType inType, const char* inName, const char* desc, Room* loc);
 	~Player();
 	void Update()override;
+	void Look();
 private:
 };
 

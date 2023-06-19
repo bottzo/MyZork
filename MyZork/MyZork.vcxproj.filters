@@ -36,9 +36,6 @@
     <ClCompile Include="src\Input.cpp">
       <Filter>Source Files\Core\Modules</Filter>
     </ClCompile>
-    <ClCompile Include="src\Globals.cpp">
-      <Filter>Source Files\Core</Filter>
-    </ClCompile>
     <ClCompile Include="src\World.cpp">
       <Filter>Source Files\Core\Modules</Filter>
     </ClCompile>
@@ -64,9 +61,6 @@
     </ClInclude>
     <ClInclude Include="src\Input.h">
       <Filter>Source Files\Core\Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Globals.h">
-      <Filter>Source Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\World.h">
       <Filter>Source Files\Core\Modules</Filter>

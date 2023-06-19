@@ -5,14 +5,20 @@
 #include "Module.h"
 #include "Entity.h"
 
+class Player;
+class Input;
+
 class World: public Module {
 public:
-	World();
+	World(const Input* input);
 	~World();
 	bool Init()override;
 	bool Update()override;
 private:
+	void ExecuteArguments();
 	std::vector<Entity*> entities;
+	Player* player;
+	const Input* input;
 };
 
 #endif

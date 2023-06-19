@@ -16,6 +16,8 @@ public:
 
 	virtual void Update() = 0;
 
+	const char* GetName();
+	const char* GetDescription();
 private:
 	const eType type;
 	std::string name;
