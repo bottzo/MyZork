@@ -28,6 +28,7 @@ public:
 	void GetContainingEntitiesByType(std::vector<const Entity*>& entities, eType type) const;
 	void AddContainingEntity(Entity* entity);
 	void RemoveContainigEntity(Entity* entity);
+	eType GetType()const;
 private:
 	const eType type;
 	std::string name;

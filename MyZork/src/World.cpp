@@ -21,13 +21,15 @@ bool World::Init() {
 	entities.push_back(firstRoom);
 	player = new Player(eType::PLAYER, "James Bond", "007", firstRoom);
 	entities.push_back(player);
+	Item* catFood = new Item(eType::ITEM, "food", "cat food");
+	entities.push_back(catFood);
+	firstRoom->AddContainingEntity(catFood);
 
-	Item* key = new Item(eType::ITEM, "key", "House front door key");
-	entities.push_back(key);
-	firstRoom->AddContainingEntity(key);
-
-	Room* secondRoom = new Room(eType::ROOM, "kitchen", "There is delicious food in here:)");
+	Room* secondRoom = new Room(eType::ROOM, "kitchen", "We can cook delicious food in here:)");
 	entities.push_back(secondRoom);
+	Item* bowl = new Item(eType::ITEM, "bowl", "Bowl for cat food", true);
+	entities.push_back(bowl);
+	secondRoom->AddContainingEntity(bowl);
 
 	Exit* exit = new Exit(eType::EXIT, "room_kitchen", "", firstRoom, secondRoom, Direction::EAST);
 	entities.push_back(exit);
@@ -103,6 +105,13 @@ bool World::ExecuteArguments()
 				player->Drop(args[1].c_str());
 			else if (args.size() == 1)
 				std::cout << "what should you " << args[0] << "?\n";
+			else
+				err = true;
+		}
+		else if (!strcmp(args[0].c_str(), "put") && (!strcmp(args[2].c_str(), "in") || !strcmp(args[2].c_str(), "inside")))
+		{
+			if (args.size() == 4)
+				player->Put(args[1].c_str(), args[3].c_str());
 			else
 				err = true;
 		}

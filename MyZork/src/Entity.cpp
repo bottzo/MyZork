@@ -43,3 +43,8 @@ void Entity::RemoveContainigEntity(Entity* entity)
 			break;
 		}
 }
+
+eType Entity::GetType() const
+{
+	return type;
+}

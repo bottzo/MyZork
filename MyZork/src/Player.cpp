@@ -46,7 +46,7 @@ void Player::Inventory() {
 		std::cout << "Nothing\n";
 	else
 		for (std::vector<const Entity*>::const_iterator it = items.cbegin(); it != items.cend(); ++it)
-			std::cout << (*it)->GetName() << '\n';
+			std::cout << (*it)->GetName() << ": " << (*it)->GetDescription() <<'\n';
 }
 
 void Player::Go(const char* where)
@@ -86,4 +86,30 @@ void Player::Drop(const char* what)
 	}
 	else
 		std::cout << "You do not have a " << what << " in your inventory\n";
+}
+
+void Player::Put(const char* what, const char* where)
+{
+	Entity* item1 = GetContainingEntityByName(what);
+	if (item1 == nullptr)
+	{
+		std::cout << "You do not have a " << what << " in your inventory\n";
+		return;
+	}
+
+	Entity* item2 = GetContainingEntityByName(where);
+	if (item2 == nullptr)
+	{
+		std::cout << "You do not have a " << where << " in your inventory\n";
+		return;
+	}
+	else if (item1->GetType() == eType::ITEM && !((Item*)item2)->CanContainItems())
+	{
+		std::cout << "You can not put a " << what << " in a " << where << '\n';
+		return;
+	}
+
+	std::cout << "You put " << item1->GetName() << " in " << item2->GetName() << '\n';
+	RemoveContainigEntity(item1);
+	item2->AddContainingEntity(item1);
 }

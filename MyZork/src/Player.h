@@ -14,6 +14,7 @@ public:
 	void Inventory();
 	void Go(const char* where);
 	void Drop(const char* what);
+	void Put(const char* what, const char* where);
 private:
 };
 
