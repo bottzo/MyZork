@@ -8,10 +8,12 @@
 enum class eType {
 	ROOM,
 	PLAYER,
-	ITEM
+	ITEM,
+	EXIT
 };
 
 class Item;
+class Exit;
 
 class Entity {
 public:
@@ -23,7 +25,7 @@ public:
 	const char* GetName() const;
 	const char* GetDescription() const;
 	Entity* GetContainingEntityByName(const char* name);
-	void GetContainingItems(std::vector<const Item*>& items) const;
+	void GetContainingEntitiesByType(std::vector<const Entity*>& entities, eType type) const;
 	void AddContainingEntity(Entity* entity);
 	void RemoveContainigEntity(Entity* entity);
 private:

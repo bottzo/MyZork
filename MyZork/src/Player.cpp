@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "Item.h"
+#include "Exit.h"
 #include <iostream>
 
 Player::Player(eType inType, const char* inName, const char* desc, Room* loc) : Creature(inType, inName, desc, loc) {}
@@ -11,10 +12,17 @@ void Player::Update(){}
 void Player::Look() { 
 	std::cout << location->GetName() << '\n';
 	std::cout << location->GetDescription() << '\n';
-	std::vector<const Item*>roomItems;
-	location->GetContainingItems(roomItems);
-	for (std::vector<const Item*>::const_iterator it = roomItems.cbegin(); it != roomItems.cend(); ++it)
-		std::cout << "I can see a " << (*it)->GetName() << '\n';
+	std::vector<const Entity*>entities;
+	location->GetContainingEntitiesByType(entities, eType::ITEM);
+	for (std::vector<const Entity*>::const_iterator it = entities.cbegin(); it != entities.cend(); ++it)
+		std::cout << "You can see a " << (*it)->GetName() << '\n';
+	entities.clear();
+	location->GetContainingEntitiesByType(entities, eType::EXIT);
+	for (std::vector<const Entity*>::const_iterator it = entities.cbegin(); it != entities.cend(); ++it)
+	{
+		Exit* exit = (Exit*)(*it);
+		std::cout << "To the " << exit->GetDirection() << " there is the " << exit->GetDstName() << '\n';
+	}
 }
 
 void Player::Take(const char* name)
@@ -32,11 +40,11 @@ void Player::Take(const char* name)
 
 void Player::Inventory() {
 	std::cout << "You have:\n";
-	std::vector<const Item*>items;
-	GetContainingItems(items);
+	std::vector<const Entity*>items;
+	GetContainingEntitiesByType(items, eType::ITEM);
 	if (items.empty())
 		std::cout << "Nothing\n";
 	else
-		for (std::vector<const Item*>::const_iterator it = items.cbegin(); it != items.cend(); ++it)
+		for (std::vector<const Entity*>::const_iterator it = items.cbegin(); it != items.cend(); ++it)
 			std::cout << (*it)->GetName() << '\n';
 }

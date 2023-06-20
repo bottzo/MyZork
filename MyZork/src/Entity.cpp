@@ -22,11 +22,11 @@ Entity* Entity::GetContainingEntityByName(const char* name)
 	return nullptr;
 }
 
-void Entity::GetContainingItems(std::vector<const Item*>& items) const
+void Entity::GetContainingEntitiesByType(std::vector<const Entity*>& entities, eType type) const
 {
 	for (std::list<Entity*>::const_iterator it = contains.cbegin(); it != contains.cend(); ++it)
-		if ((*it)->type == eType::ITEM)
-			items.push_back((Item*)(*it));
+		if ((*it)->type == type)
+			entities.push_back((*it));
 }
 
 void Entity::AddContainingEntity(Entity* entity)

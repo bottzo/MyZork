@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "Input.h"
 #include "Item.h"
+#include "Exit.h"
 #include <iostream>
 
 World::World(const Input*inInput) : Module(), input(inInput) {}
@@ -25,7 +26,15 @@ bool World::Init() {
 	entities.push_back(key);
 	firstRoom->AddContainingEntity(key);
 
-	//Fer els exits
+	Room* secondRoom = new Room(eType::ROOM, "Second Room", "The second Room done :)");
+	entities.push_back(secondRoom);
+
+	Exit* exit = new Exit(eType::EXIT, "SecondRoom_TestRoom", "SecondRoom_TestRoom", firstRoom, secondRoom, Direction::EAST);
+	entities.push_back(exit);
+	firstRoom->AddContainingEntity(exit);
+	exit = new Exit(eType::EXIT, "TestRoom_SecondRoom", "SecondRoom_SecondRoom", secondRoom, firstRoom, Direction::WEST);
+	secondRoom->AddContainingEntity(exit);
+	entities.push_back(exit);
 
 	std::cout << "Welcome to MyZork\n" << "----------------\n";
 	player->Look();
