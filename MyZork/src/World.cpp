@@ -4,6 +4,7 @@
 #include "Input.h"
 #include "Item.h"
 #include "Exit.h"
+#include "Npc.h"
 #include <iostream>
 
 World::World(const Input*inInput) : Module(), input(inInput) {}
@@ -17,19 +18,19 @@ World::~World() {
 
 bool World::Init() {
 	entities.reserve(3);
-	Room* firstRoom = new Room(eType::ROOM, "room", "This is the first room I created for testing");
+	Room* firstRoom = new Room(eType::ROOM, "room", "This is your room");
 	entities.push_back(firstRoom);
 	player = new Player(eType::PLAYER, "James Bond", "007", firstRoom);
 	entities.push_back(player);
-	Item* catFood = new Item(eType::ITEM, "food", "cat food");
-	entities.push_back(catFood);
-	firstRoom->AddContainingEntity(catFood);
+	Item* bowl = new Item(eType::ITEM, "bowl", "Bowl for cat food", true);
+	entities.push_back(bowl);
+	firstRoom->AddContainingEntity(bowl);
 
 	Room* secondRoom = new Room(eType::ROOM, "kitchen", "We can cook delicious food in here:)");
 	entities.push_back(secondRoom);
-	Item* bowl = new Item(eType::ITEM, "bowl", "Bowl for cat food", true);
-	entities.push_back(bowl);
-	secondRoom->AddContainingEntity(bowl);
+	Item* catFood = new Item(eType::ITEM, "food", "cat food");
+	entities.push_back(catFood);
+	secondRoom->AddContainingEntity(catFood);
 
 	Room* thirdRoom = new Room(eType::ROOM, "outside", "Outside the house. There is a nice field");
 	entities.push_back(thirdRoom);
@@ -49,6 +50,9 @@ bool World::Init() {
 	thirdRoom->AddContainingEntity(exit);
 	entities.push_back(exit);
 
+	Npc* cat = new Npc(eType::NPC, "garfield", "cat", thirdRoom);
+	entities.push_back(cat);
+
 	std::cout << "Welcome to MyZork\n" << "----------------\n";
 	player->Look();
 
@@ -61,7 +65,8 @@ bool World::Update()
 		return false;
 
 	for (std::vector<Entity*>::iterator it = entities.begin(); it != entities.end(); ++it)
-		(*it)->Update();
+		if (!(*it)->Update())
+			return false;
 	return true;
 }
 

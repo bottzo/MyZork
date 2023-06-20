@@ -147,6 +147,7 @@
     <ClCompile Include="src\Item.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Module.cpp" />
+    <ClCompile Include="src\Npc.cpp" />
     <ClCompile Include="src\Player.cpp" />
     <ClCompile Include="src\Room.cpp" />
     <ClCompile Include="src\World.cpp" />
@@ -159,6 +160,7 @@
     <ClInclude Include="src\Input.h" />
     <ClInclude Include="src\Item.h" />
     <ClInclude Include="src\Module.h" />
+    <ClInclude Include="src\Npc.h" />
     <ClInclude Include="src\Player.h" />
     <ClInclude Include="src\Room.h" />
     <ClInclude Include="src\World.h" />

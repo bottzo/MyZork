@@ -15,7 +15,7 @@ class Exit : public Entity {
 public:
 	Exit(eType inType, const char* inName, const char* desc, Room* inSrc, Room* inDst, Direction inDirection);
 	~Exit();
-	void Update()override;
+	bool Update()override;
 	const char* GetDirection();
 	Room* GetDst();
 	bool CorrectDirection(const char* dir);

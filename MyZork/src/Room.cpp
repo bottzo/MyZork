@@ -4,4 +4,4 @@ Room::Room(eType inType, const char* inName, const char* desc) : Entity(inType, 
 
 Room::~Room() {}
 
-void Room::Update(){}
+bool Room::Update() { return true; }

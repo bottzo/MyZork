@@ -4,7 +4,7 @@ Item::Item(eType inType, const char* inName, const char* desc, bool containItems
 
 Item::~Item(){}
 
-void Item::Update(){}
+bool Item::Update() { return true; }
 
 bool Item::CanContainItems()
 {

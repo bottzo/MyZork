@@ -5,7 +5,7 @@ direction(inDirection), src(inSrc), dst(inDst) {}
 
 Exit::~Exit() {}
 
-void Exit::Update() {}
+bool Exit::Update() { return true; }
 
 const char* Exit::GetDirection()
 {

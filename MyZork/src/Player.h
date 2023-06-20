@@ -8,7 +8,7 @@ class Player : public Creature {
 public:
 	Player(eType inType, const char* inName, const char* desc, Room* loc);
 	~Player();
-	void Update()override;
+	bool Update()override;
 	void Look();
 	void Take(const char* name);
 	void Inventory();

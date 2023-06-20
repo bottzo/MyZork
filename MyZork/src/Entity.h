@@ -9,7 +9,8 @@ enum class eType {
 	ROOM,
 	PLAYER,
 	ITEM,
-	EXIT
+	EXIT,
+	NPC
 };
 
 class Item;
@@ -20,7 +21,7 @@ public:
 	Entity(eType inType, const char* inName, const char* desc);
 	virtual ~Entity();
 
-	virtual void Update() = 0;
+	virtual bool Update() = 0;
 
 	const char* GetName() const;
 	const char* GetDescription() const;

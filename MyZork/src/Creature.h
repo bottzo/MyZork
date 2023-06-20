@@ -8,7 +8,7 @@ class Creature : public Entity {
 public:
 	Creature(eType inType, const char* inName, const char* desc, Room* loc);
 	virtual ~Creature();
-	virtual void Update() = 0;
+	virtual bool Update() = 0;
 protected:
 	Room* location;
 };

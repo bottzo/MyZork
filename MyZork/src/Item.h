@@ -7,7 +7,7 @@ class Item : public Entity {
 public:
 	Item(eType inType, const char* inName, const char* desc, bool containItems = false);
 	~Item();
-	void Update()override;
+	bool Update()override;
 	bool CanContainItems();
 private:
 	bool canContainItems;

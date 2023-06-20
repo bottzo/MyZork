@@ -7,7 +7,7 @@ Player::Player(eType inType, const char* inName, const char* desc, Room* loc) : 
 
 Player::~Player(){}
 
-void Player::Update(){}
+bool Player::Update() { return true; }
 
 void Player::Look() { 
 	std::cout << location->GetName() << '\n';
@@ -16,6 +16,10 @@ void Player::Look() {
 	location->GetContainingEntitiesByType(entities, eType::ITEM);
 	for (std::vector<const Entity*>::const_iterator it = entities.cbegin(); it != entities.cend(); ++it)
 		std::cout << "You can see a " << (*it)->GetName() << '\n';
+	entities.clear();
+	location->GetContainingEntitiesByType(entities, eType::NPC);
+	for (std::vector<const Entity*>::const_iterator it = entities.cbegin(); it != entities.cend(); ++it)
+		std::cout << "You can see a " << (*it)->GetDescription() << ". Its name is " << (*it)->GetName() << '\n';
 	entities.clear();
 	location->GetContainingEntitiesByType(entities, eType::EXIT);
 	for (std::vector<const Entity*>::const_iterator it = entities.cbegin(); it != entities.cend(); ++it)

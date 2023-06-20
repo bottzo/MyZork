@@ -7,7 +7,7 @@ class Room : public Entity {
 public:
 	Room(eType inType, const char* inName, const char* desc);
 	~Room();
-	void Update()override;
+	bool Update()override;
 private:
 };
 
