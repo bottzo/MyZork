@@ -2,6 +2,7 @@
 #include "Room.h"
 #include "Player.h"
 #include "Input.h"
+#include "Item.h"
 #include <iostream>
 
 World::World(const Input*inInput) : Module(), input(inInput) {}
@@ -14,11 +15,17 @@ World::~World() {
 }
 
 bool World::Init() {
-	entities.reserve(2);
+	entities.reserve(3);
 	Room* firstRoom = new Room(eType::ROOM, "Test Room", "This is the first room I created for testing");
 	entities.push_back(firstRoom);
 	player = new Player(eType::PLAYER, "James Bond", "007", firstRoom);
 	entities.push_back(player);
+
+	Item* key = new Item(eType::ITEM, "Key", "House front door key");
+	entities.push_back(key);
+	firstRoom->AddEntity(key);
+
+	//Fer els exits
 
 	std::cout << "Welcome to MyZork\n" << "----------------\n";
 	player->Look();

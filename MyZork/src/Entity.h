@@ -3,11 +3,15 @@
 
 #include <string>
 #include <list>
+#include <vector>
 
 enum class eType {
 	ROOM,
-	PLAYER
+	PLAYER,
+	ITEM
 };
+
+class Item;
 
 class Entity {
 public:
@@ -18,6 +22,8 @@ public:
 
 	const char* GetName() const;
 	const char* GetDescription() const;
+	void GetContainingItems(std::vector<const Item*>& items);
+	void AddEntity(Entity* entity);
 private:
 	const eType type;
 	std::string name;
