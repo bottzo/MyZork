@@ -21,15 +21,14 @@ bool World::Init() {
 	player = new Player(eType::PLAYER, "James Bond", "007", firstRoom);
 	entities.push_back(player);
 
-	Item* key = new Item(eType::ITEM, "Key", "House front door key");
+	Item* key = new Item(eType::ITEM, "key", "House front door key");
 	entities.push_back(key);
-	firstRoom->AddEntity(key);
+	firstRoom->AddContainingEntity(key);
 
 	//Fer els exits
 
 	std::cout << "Welcome to MyZork\n" << "----------------\n";
 	player->Look();
-	std::cout << '\n';
 
 	return true;
 }
@@ -53,18 +52,33 @@ bool World::ExecuteArguments()
 		if (!strcmp(args[0].c_str(), "look"))
 		{
 			if (args.size() == 1)
-			{
 				player->Look();
-				std::cout << '\n';
-			}
 			else
 				err = true;
 		}
 		else if (!strcmp(args[0].c_str(), "quit"))
+		{
 			if (args.size() == 1)
 				return false;
 			else
 				err = true;
+		}
+		else if (!strcmp(args[0].c_str(), "inventory"))
+		{
+			if (args.size() == 1)
+				player->Inventory();
+			else
+				err = true;
+		}
+		else if (!strcmp(args[0].c_str(), "take") || !strcmp(args[0].c_str(), "get"))
+		{
+			if (args.size() == 2)
+				player->Take(args[1].c_str());
+			else if (args.size() == 1)
+				std::cout << "what should you take?\n";
+			else
+				err = true;
+		}
 		else
 			std::cout << "Did not understand the command\n";
 		if(err)

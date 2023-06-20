@@ -10,6 +10,8 @@ public:
 	~Player();
 	void Update()override;
 	void Look();
+	void Take(const char* name);
+	void Inventory();
 private:
 };
 

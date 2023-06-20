@@ -22,8 +22,10 @@ public:
 
 	const char* GetName() const;
 	const char* GetDescription() const;
-	void GetContainingItems(std::vector<const Item*>& items);
-	void AddEntity(Entity* entity);
+	Entity* GetContainingEntityByName(const char* name);
+	void GetContainingItems(std::vector<const Item*>& items) const;
+	void AddContainingEntity(Entity* entity);
+	void RemoveContainigEntity(Entity* entity);
 private:
 	const eType type;
 	std::string name;
