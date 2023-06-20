@@ -75,7 +75,7 @@ bool World::ExecuteArguments()
 			if (args.size() == 2)
 				player->Take(args[1].c_str());
 			else if (args.size() == 1)
-				std::cout << "what should you take?\n";
+				std::cout << "what should you " << args[0] << "?\n";
 			else
 				err = true;
 		}
