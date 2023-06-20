@@ -53,7 +53,7 @@ bool World::Init() {
 	Npc* cat = new Npc(eType::NPC, "garfield", "cat", thirdRoom);
 	entities.push_back(cat);
 
-	std::cout << "Welcome to MyZork\n" << "----------------\n";
+	std::cout << "Welcome to MyZork\n" << "Your mission is to feed the cat\n" << "----------------\n\n";
 	player->Look();
 
 	return true;
