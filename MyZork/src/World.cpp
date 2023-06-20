@@ -31,11 +31,22 @@ bool World::Init() {
 	entities.push_back(bowl);
 	secondRoom->AddContainingEntity(bowl);
 
+	Room* thirdRoom = new Room(eType::ROOM, "outside", "Outside the house. There is a nice field");
+	entities.push_back(thirdRoom);
+	//Cat
+
 	Exit* exit = new Exit(eType::EXIT, "room_kitchen", "", firstRoom, secondRoom, Direction::EAST);
 	entities.push_back(exit);
 	firstRoom->AddContainingEntity(exit);
 	exit = new Exit(eType::EXIT, "kitchen_room", "", secondRoom, firstRoom, Direction::WEST);
 	secondRoom->AddContainingEntity(exit);
+	entities.push_back(exit);
+
+	exit = new Exit(eType::EXIT, "room_outside", "", firstRoom, thirdRoom, Direction::NORTH);
+	entities.push_back(exit);
+	firstRoom->AddContainingEntity(exit);
+	exit = new Exit(eType::EXIT, "outside_room", "", thirdRoom, firstRoom, Direction::SOUTH);
+	thirdRoom->AddContainingEntity(exit);
 	entities.push_back(exit);
 
 	std::cout << "Welcome to MyZork\n" << "----------------\n";
