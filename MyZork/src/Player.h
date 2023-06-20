@@ -12,6 +12,7 @@ public:
 	void Look();
 	void Take(const char* name);
 	void Inventory();
+	void Go(const char* where);
 private:
 };
 

@@ -21,7 +21,7 @@ void Player::Look() {
 	for (std::vector<const Entity*>::const_iterator it = entities.cbegin(); it != entities.cend(); ++it)
 	{
 		Exit* exit = (Exit*)(*it);
-		std::cout << "To the " << exit->GetDirection() << " there is the " << exit->GetDstName() << '\n';
+		std::cout << "To the " << exit->GetDirection() << " there is the " << exit->GetDst()->GetName() << '\n';
 	}
 }
 
@@ -47,4 +47,30 @@ void Player::Inventory() {
 	else
 		for (std::vector<const Entity*>::const_iterator it = items.cbegin(); it != items.cend(); ++it)
 			std::cout << (*it)->GetName() << '\n';
+}
+
+void Player::Go(const char* where)
+{
+	bool found = false;
+	std::vector<const Entity*>exits;
+	location->GetContainingEntitiesByType(exits, eType::EXIT);
+	for (std::vector<const Entity*>::const_iterator it = exits.cbegin(); it != exits.cend(); ++it)
+	{
+		Exit* exit = (Exit*)(*it);
+		if (!strcmp(where, exit->GetDst()->GetName()) || exit->CorrectDirection(where))
+		{
+			location->RemoveContainigEntity(this);
+			exit->GetDst()->AddContainingEntity(this);
+			location = exit->GetDst();
+			std::cout << "You go to the " << where << '\n';
+			Look();
+			found = true;
+			break;
+		}
+	}
+	if (found)
+		std::cout << "";
+	else
+		std::cout << "There is not such place or direction to go\n";
+
 }

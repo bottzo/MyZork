@@ -17,7 +17,7 @@ World::~World() {
 
 bool World::Init() {
 	entities.reserve(3);
-	Room* firstRoom = new Room(eType::ROOM, "Test Room", "This is the first room I created for testing");
+	Room* firstRoom = new Room(eType::ROOM, "room", "This is the first room I created for testing");
 	entities.push_back(firstRoom);
 	player = new Player(eType::PLAYER, "James Bond", "007", firstRoom);
 	entities.push_back(player);
@@ -26,13 +26,13 @@ bool World::Init() {
 	entities.push_back(key);
 	firstRoom->AddContainingEntity(key);
 
-	Room* secondRoom = new Room(eType::ROOM, "Second Room", "The second Room done :)");
+	Room* secondRoom = new Room(eType::ROOM, "kitchen", "There is delicious food in here:)");
 	entities.push_back(secondRoom);
 
-	Exit* exit = new Exit(eType::EXIT, "SecondRoom_TestRoom", "SecondRoom_TestRoom", firstRoom, secondRoom, Direction::EAST);
+	Exit* exit = new Exit(eType::EXIT, "room_kitchen", "", firstRoom, secondRoom, Direction::EAST);
 	entities.push_back(exit);
 	firstRoom->AddContainingEntity(exit);
-	exit = new Exit(eType::EXIT, "TestRoom_SecondRoom", "SecondRoom_SecondRoom", secondRoom, firstRoom, Direction::WEST);
+	exit = new Exit(eType::EXIT, "kitchen_room", "", secondRoom, firstRoom, Direction::WEST);
 	secondRoom->AddContainingEntity(exit);
 	entities.push_back(exit);
 
@@ -85,6 +85,15 @@ bool World::ExecuteArguments()
 				player->Take(args[1].c_str());
 			else if (args.size() == 1)
 				std::cout << "what should you " << args[0] << "?\n";
+			else
+				err = true;
+		}
+		else if (!strcmp(args[0].c_str(), "go"))
+		{
+			if (args.size() == 2)
+				player->Go(args[1].c_str());
+			else if (args.size() == 1)
+				std::cout << "where should you " << args[0] << "?\n";
 			else
 				err = true;
 		}
