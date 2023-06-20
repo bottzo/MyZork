@@ -1,5 +1,6 @@
 #include "App.h"
 #include <iostream>
+#include <stdlib.h>
 
 int main()
 {
@@ -12,6 +13,7 @@ int main()
 		if (!app.Update())
 			break;
 	}
-	std::cout << "Thanks for playing";
+	std::cout << "Thanks for playing\n";
+	system("pause");
 	return 0;
 }
