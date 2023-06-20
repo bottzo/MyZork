@@ -74,3 +74,16 @@ void Player::Go(const char* where)
 		std::cout << "There is not such place or direction to go\n";
 
 }
+
+void Player::Drop(const char* what)
+{
+	Entity* entity = GetContainingEntityByName(what);
+	if (entity != nullptr)
+	{
+		std::cout << "You droped the " << entity->GetName() << '\n';
+		RemoveContainigEntity(entity);
+		location->AddContainingEntity(entity);
+	}
+	else
+		std::cout << "You do not have a " << what << " in your inventory\n";
+}

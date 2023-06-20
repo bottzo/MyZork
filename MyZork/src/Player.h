@@ -13,6 +13,7 @@ public:
 	void Take(const char* name);
 	void Inventory();
 	void Go(const char* where);
+	void Drop(const char* what);
 private:
 };
 

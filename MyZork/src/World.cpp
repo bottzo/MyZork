@@ -97,6 +97,15 @@ bool World::ExecuteArguments()
 			else
 				err = true;
 		}
+		else if (!strcmp(args[0].c_str(), "drop"))
+		{
+			if (args.size() == 2)
+				player->Drop(args[1].c_str());
+			else if (args.size() == 1)
+				std::cout << "what should you " << args[0] << "?\n";
+			else
+				err = true;
+		}
 		else
 			std::cout << "Did not understand the command\n";
 		if(err)
