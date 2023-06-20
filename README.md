@@ -1,10 +1,13 @@
 # MyZork
 ## Author
 Jordi Bach (bottzo)
+
 ##Github repo
 https://github.com/bottzo/MyZork
+
 ##License
 https://github.com/bottzo/MyZork/blob/main/LICENSE
+
 ##GamePlay
 First version of the game
 commands:
