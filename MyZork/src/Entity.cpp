@@ -48,3 +48,8 @@ eType Entity::GetType() const
 {
 	return type;
 }
+
+bool Entity::ContainsEntities()
+{
+	return !contains.empty();
+}

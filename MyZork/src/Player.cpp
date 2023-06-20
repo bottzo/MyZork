@@ -46,7 +46,20 @@ void Player::Inventory() {
 		std::cout << "Nothing\n";
 	else
 		for (std::vector<const Entity*>::const_iterator it = items.cbegin(); it != items.cend(); ++it)
-			std::cout << (*it)->GetName() << ": " << (*it)->GetDescription() <<'\n';
+		{
+			Item* item = (Item*)(*it);
+			if (item->ContainsEntities())
+			{
+				std::cout << (*it)->GetName() << " with ";
+				std::vector<const Entity*>moreItems;
+				item->GetContainingEntitiesByType(moreItems, eType::ITEM);
+				for(std::vector<const Entity*>::const_iterator its = moreItems.cbegin(); its != moreItems.cend(); ++its)
+					std::cout << (*its)->GetName() << " ";
+				std::cout << '\n';
+			}
+			else
+				std::cout << (*it)->GetName() << ": " << (*it)->GetDescription() << '\n';
+		}
 }
 
 void Player::Go(const char* where)

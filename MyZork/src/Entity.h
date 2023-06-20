@@ -29,6 +29,7 @@ public:
 	void AddContainingEntity(Entity* entity);
 	void RemoveContainigEntity(Entity* entity);
 	eType GetType()const;
+	bool ContainsEntities();
 private:
 	const eType type;
 	std::string name;
